@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: solvora-website
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://solvora-website.onrender.com
+      - key: DATABASE_URL
+        fromDatabase:
+          name: solvora_db
+          property: connectionString
+
+databases:
+  - name: solvora_db
+    plan: free
+    postgresVersion: 14
