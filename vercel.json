@@ -1,0 +1,14 @@
+{
+  "buildCommand": "yarn install && yarn build",
+  "outputDirectory": ".next",
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "pages/api/**": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
+}
